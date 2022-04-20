@@ -1,0 +1,9 @@
+.layoutWrap {
+  @apply flex;
+  .rightSideWrap {
+    @apply basis-full;
+    .main {
+      @apply bg-fadeBlack h-[100vh] overflow-y-scroll;
+    }
+  }
+}

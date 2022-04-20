@@ -1,0 +1,35 @@
+.navbarWrap {
+  @apply flex font-LogoTypeGothic7;
+  .navArea {
+    @apply w-[235px] bg-black pl-[16px];
+    .logo {
+      @apply w-[170px] pt-[20px];
+      img {
+        @apply w-fit;
+      }
+    }
+
+    .navListBox {
+      @apply flex flex-col justify-center mt-[40px];
+      .navList {
+        @apply flex flex-col gap-y-[35px];
+        .navLink {
+          @apply text-white text-gray flex items-center gap-[16px] text-[20px];
+          &:hover {
+            @apply text-white;
+          }
+
+          .icon {
+            @apply text-[35px];
+          }
+        }
+      }
+    }
+
+    .memoSum {
+      .memoSumHead {
+        @apply border-gray border-t border-b text-center text-gray leading-[2.8] mt-[24px];
+      }
+    }
+  }
+}

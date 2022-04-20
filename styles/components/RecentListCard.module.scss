@@ -1,0 +1,12 @@
+.recentCardWrap {
+  @apply flex flex-col items-center cursor-pointer m-[10px] w-[150px] grow-[1];
+  backface-visibility: hidden;
+
+  .recentListCardIconContainer {
+    @apply w-fit bg-white border-2 border-black rounded-[5px];
+  }
+
+  .listName {
+    @apply text-[16px] text-gray;
+  }
+}
