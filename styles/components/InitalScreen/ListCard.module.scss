@@ -1,0 +1,18 @@
+.recentCardAreaOverall {
+  @apply flex justify-between;
+  .recentCardWrap {
+    @apply w-fit flex flex-col cursor-pointer;
+    backface-visibility: hidden;
+
+    .recentListCardIconContainer {
+      @apply w-[150px] h-[150px] bg-white border-2 border-black rounded-[5px] flex flex-col justify-center;
+      .recentCardIcon {
+        @apply w-fit mx-auto;
+      }
+    }
+
+    .listName {
+      @apply text-[16px] text-gray;
+    }
+  }
+}
