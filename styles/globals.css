@@ -5,5 +5,5 @@
     font-family: "LogoTypeGothic7";
     font-style: normal;
     font-weight: 600;
-    src: url(/fonts/ロゴたいぷゴシック.otf) format("otf");
+    src: url(../public/fonts/LogoTypeGothic.woff2.ttf) format('truetype');
 }
