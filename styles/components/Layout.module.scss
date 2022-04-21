@@ -1,9 +1,9 @@
 .layoutWrap {
-  @apply flex font-LogoTypeGothic7;
+  @apply flex font-LogoTypeGothic7 w-[100vw] max-h-screen overflow-hidden;
   .rightSideWrap {
     @apply basis-full;
     .main {
-      @apply bg-fadeBlack h-[100vh] overflow-y-scroll;
+      @apply bg-fadeBlack max-h-full overflow-y-scroll;
     }
   }
 }
