@@ -1,7 +1,7 @@
 .navbarWrap {
   @apply flex font-LogoTypeGothic7;
   .navArea {
-    @apply w-[235px] bg-black pl-[16px];
+    @apply w-[235px] bg-black px-[16px];
     .logo {
       @apply w-[170px] pt-[20px];
       img {
@@ -28,7 +28,7 @@
 
     .memoSum {
       .memoSumHead {
-        @apply border-gray border-t border-b text-center text-gray leading-[2.8] mt-[24px];
+        @apply border-fadeGray border-t border-b text-center text-gray leading-[2.8] mt-[24px];
       }
     }
   }
