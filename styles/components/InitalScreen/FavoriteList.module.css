@@ -1,0 +1,8 @@
+.favorListWrap {
+  @apply mt-[35px];
+}
+.favorListWrap .favorListHeader {
+  @apply mb-[41px];
+}
+
+/*# sourceMappingURL=FavoriteList.module.css.map */

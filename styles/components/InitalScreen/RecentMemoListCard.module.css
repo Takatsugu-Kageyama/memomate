@@ -1,0 +1,15 @@
+.memoListCardOverall {
+  @apply flex justify-between grid grid-cols-2 gap-[12px];
+}
+.memoListCardOverall .memoListCardWrap {
+  @apply basis-auto  h-[80px] bg-fadeGray rounded-[5px] flex flex-col justify-center cursor-pointer;
+  backface-visibility: hidden;
+}
+.memoListCardOverall .memoListCardWrap .listName {
+  @apply ml-[27px] text-[16px] text-white;
+}
+.memoListCardOverall .memoListCardWrap:hover {
+  @apply bg-middleGray;
+}
+
+/*# sourceMappingURL=RecentMemoListCard.module.css.map */

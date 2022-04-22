@@ -1,0 +1,8 @@
+.recentMemoListWrap {
+  @apply mt-[35px];
+}
+.recentMemoListWrap .recentMemoListHeader {
+  @apply mb-[41px];
+}
+
+/*# sourceMappingURL=RecentMemoList.module.css.map */

@@ -1,0 +1,17 @@
+.searchAreaWrap {
+  @apply w-full h-fit bg-black py-[20px];
+}
+.searchAreaWrap .searchAreaContainer {
+  @apply relative w-[45.5%];
+}
+.searchAreaWrap .searchAreaContainer .searchArea {
+  @apply ml-[60px] bg-softWhite;
+}
+.searchAreaWrap .searchAreaContainer .searchIconBox {
+  @apply absolute top-[17%] left-[102%];
+}
+.searchAreaWrap .searchAreaContainer .searchIconBox .searchIcon {
+  @apply text-[30px];
+}
+
+/*# sourceMappingURL=SearchArea.module.css.map */

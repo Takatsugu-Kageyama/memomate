@@ -1,0 +1,14 @@
+.overall {
+  @apply mt-[31px]  w-[96%]  mx-auto text-gray text-[32px] object-contain;
+}
+.overall .recentListWrap .recentListWrap .recentListHeader {
+  @apply mb-[41px];
+}
+.overall .favorListWrap {
+  @apply mt-[35px];
+}
+.overall .favorListWrap .favorListWrap .favorListHeader {
+  @apply mb-[41px];
+}
+
+/*# sourceMappingURL=MainPage.module.css.map */

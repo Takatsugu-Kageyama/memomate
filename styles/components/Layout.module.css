@@ -1,0 +1,11 @@
+.layoutWrap {
+  @apply flex font-LogoTypeGothic7 w-[100vw] max-h-screen min-h-screen overflow-hidden;
+}
+.layoutWrap .rightSideWrap {
+  @apply basis-full;
+}
+.layoutWrap .rightSideWrap .main {
+  @apply bg-fadeBlack font-LogoTypeGothic7 max-h-full min-h-full overflow-y-scroll;
+}
+
+/*# sourceMappingURL=Layout.module.css.map */
