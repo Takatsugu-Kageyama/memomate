@@ -2,7 +2,6 @@ import styles from "../../styles/components/InitalScreen/ListCard.module.scss";
 
 const FavoriteListCard = () => {
   return (
-    <>
       <div className={styles.recentCardAreaOverall}>
         <div className={styles.recentCardWrap}>
           <div className={styles.recentListCardIconContainer}>
@@ -61,7 +60,6 @@ const FavoriteListCard = () => {
           <p className={styles.listName}>リスト#8</p>
         </div>
       </div>
-    </>
   );
 };
 export default FavoriteListCard;

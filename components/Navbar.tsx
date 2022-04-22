@@ -48,7 +48,7 @@ const Navbar = () => {
                 </li>
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/CreateMemo">
               <a>
                 <li className={styles.navLink}>
                   <NoteAddOutlined className={styles.icon} />

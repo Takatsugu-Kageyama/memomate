@@ -1,7 +1,7 @@
 .memoListCardOverall {
-  @apply flex justify-between grid grid-cols-2 gap-[12px] grow-[1];
+  @apply flex justify-between grid grid-cols-2 gap-[12px] ;
   .memoListCardWrap {
-    @apply w-full h-[80px] bg-fadeGray rounded-[5px] flex flex-col justify-center cursor-pointer;
+    @apply basis-auto  h-[80px] bg-fadeGray rounded-[5px] flex flex-col justify-center cursor-pointer;
     backface-visibility: hidden;
 
     .listName {

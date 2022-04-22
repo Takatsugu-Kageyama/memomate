@@ -1,11 +1,11 @@
 .recentCardAreaOverall {
   @apply flex justify-between;
   .recentCardWrap {
-    @apply bg-sub01Gray rounded-[5px] w-fit p-[18px] flex flex-col cursor-pointer;
+    @apply bg-sub01Gray rounded-[5px] basis-auto p-[18px] flex flex-col cursor-pointer grow-[8];
     backface-visibility: hidden;
 
     .recentListCardIconContainer {
-      @apply w-[150px] h-[150px] bg-softWhite border-2 border-black rounded-[5px] flex flex-col justify-center;
+      @apply basis-auto h-[150px] bg-softWhite border-2 border-black rounded-[5px] flex flex-col justify-center;
       .recentCardIcon {
         @apply w-fit mx-auto;
       }
