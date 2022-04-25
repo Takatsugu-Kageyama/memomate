@@ -5,7 +5,7 @@
   @apply w-[365px];
 }
 .overall .memoNameInputWrap .memoNameInput {
-  @apply bg-softWhite text-black text-[53px] h-[53px];
+  @apply bg-fadeBlack border-none text-white text-[53px] h-[53px];
 }
 .overall .memoNameInputWrap .updateTimeText {
   @apply text-[12px] mt-[18px];

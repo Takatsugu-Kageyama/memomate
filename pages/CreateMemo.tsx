@@ -24,7 +24,7 @@ const CreateMemo = () => {
     </Head>
     <div className={styles.memoNameInputWrap}>
       {/*Memo's title*/}
-      <Input className={styles.memoNameInput} placeholder='Basic usage' />
+      <Input _focus={{ boxShadow: 'none' }} className={styles.memoNameInput} placeholder='メモ名を入力' />
       {/*TODO Get times when Memo is updated by user and get time from database. */}
       <p className={styles.updateTimeText}>最終更新日：2022/02/06 13:32:98</p>
     </div>

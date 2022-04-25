@@ -40,7 +40,7 @@ const Navbar = () => {
                 </li>
               </a>
             </Link>
-            <Link href="/">
+            <Link href="CreateList">
               <a>
                 <li className={styles.navLink}>
                   <AddBoxOutlined className={styles.icon} />
