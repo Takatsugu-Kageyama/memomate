@@ -1,5 +1,5 @@
 .recentCardAreaOverall {
-  @apply flex justify-between;
+  @apply flex gap-[1%];
   .recentCardWrap {
     @apply bg-sub01Gray rounded-[5px] basis-auto p-[18px] flex flex-col cursor-pointer grow-[8];
     backface-visibility: hidden;
