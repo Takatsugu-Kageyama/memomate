@@ -1,13 +1,17 @@
 // import styles
-import styles from "../styles/pages/CreateList.module.scss"
+import styles from "../styles/pages/CreateList.module.scss";
 // import Component
 import ListDetail from "../components/CreateList/ListDetail";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
+//import emoji-mart
+import { Picker } from "emoji-mart";
 
 const CreateList = () => {
-    return <div className={styles.overall}>
-        <ListDetail/>
-        <SelectedMemo/>
+  return (
+    <div className={styles.overall}>
+      <ListDetail />
+      <SelectedMemo />
     </div>
+  );
 };
-export default CreateList
+export default CreateList;
