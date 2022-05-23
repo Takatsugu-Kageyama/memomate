@@ -702,11 +702,6 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
   integrity sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
 
-"@emoji-mart/data@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@emoji-mart/data/-/data-1.0.1.tgz#76ca80a7b6d02706ec329116d6e4518bb3453ad2"
-  integrity sha512-5X6DbIdyFvSFMfGdPkPd/yxQmtfMptZg5UUSL+afb39SdbPvobJY7VhzGM0IekxjszW3ygxZ2X5mVhy5AqF5vQ==
-
 "@emotion/babel-plugin@^11.7.1":
   version "11.7.2"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.7.2.tgz#fec75f38a6ab5b304b0601c74e2a5e77c95e5fa0"
@@ -1070,13 +1065,6 @@
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.8.tgz#be3e914e84eacf16dbebd311c0d0b44aa1174c64"
   integrity sha512-ZK5v4bJwgXldAUA8r3q9YKfCwOqoHTK/ZqRjSeRXQrBXWouoPnS4MQtgC4AXGiiBuUu5wxrRgTlv0ktmM4P1Aw==
-
-"@types/emoji-mart@^3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@types/emoji-mart/-/emoji-mart-3.0.9.tgz#2f7ef5d9ec194f28029c46c81a5fc1e5b0efa73c"
-  integrity sha512-qdBo/2Y8MXaJ/2spKjDZocuq79GpnOhkwMHnK2GnVFa8WYFgfA+ei6sil3aeWQPCreOKIx9ogPpR5+7MaOqYAA==
-  dependencies:
-    "@types/react" "*"
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -1711,10 +1699,10 @@ electron-to-chromium@^1.4.84:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.103.tgz#abfe376a4d70fa1e1b4b353b95df5d6dfd05da3a"
   integrity sha512-c/uKWR1Z/W30Wy/sx3dkZoj4BijbXX85QKWu9jJfjho3LBAXNEGAEW3oWiGb+dotA6C6BzCTxL2/aLes7jlUeg==
 
-emoji-mart@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-5.0.0.tgz#1c16bf4e675c59c08a73b11e385cf1cc4d425b27"
-  integrity sha512-4O75LxV/RPOrtC9+0qhHhfPgJgW/Kwc4zv15h190liC3vJ/5RVibIrnPlDZ0xqYx0bPVOy3W/QcDTZY+jq1qOw==
+emoji-picker-react@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/emoji-picker-react/-/emoji-picker-react-3.5.1.tgz#dbb4cda675a58dc86624d2fc488f75c2f4fc377d"
+  integrity sha512-cuSthFAvUO8Q1N7KJPEgZ7N0JNIWPKgN5GUmKe71UlSD4qFYI/p05RT9nohlWOq6YSFhEy2mI/60zBZiaku4mg==
 
 emoji-regex@^9.2.2:
   version "9.2.2"

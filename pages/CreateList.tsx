@@ -1,17 +1,13 @@
 // import styles
 import styles from "../styles/pages/CreateList.module.scss";
 // import Component
-import ListDetail from "../components/CreateList/ListDetail";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
 //import emoji-mart
-import { Picker } from "emoji-mart";
+import Picker from 'emoji-picker-react';
+//import React DOM
+
 
 const CreateList = () => {
-  return (
-    <div className={styles.overall}>
-      <ListDetail />
-      <SelectedMemo />
-    </div>
-  );
+    return <></>
 };
 export default CreateList;
