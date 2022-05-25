@@ -1,11 +1,10 @@
-export type Props = {
-    selectedEmoji: any;
-    emojiValue: {
-        id: string;
-        native: string;
-        colons: string;
-        emotions: string[];
-        name: string;
-        skin: number | null;
-    };
+export type EmojiProps = {
+  selectedEmoji: any;
+  emojiValue: {
+    emoji?: undefined;
+    unified: number;
+    activeSkinTone: string | null;
+    originalUnified: number;
+    name: string[];
+  };
 };
