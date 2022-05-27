@@ -1,11 +1,10 @@
 //import Emoji-Piker
 import Picker from "emoji-picker-react";
 //import React
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-//import types
-import { HTMLButtonEvent } from "../../util/TypeDefinition/EventSchema";
-import { EmojiProps } from "../../util/TypeDefinition/EmojiSchema";
+//import styles
+import styles from "../../styles/components/CerateList/SelectedEmoji.module.scss";
 
 const SelectedEmoji = () => {
   //Define Documentation
@@ -14,29 +13,36 @@ const SelectedEmoji = () => {
   const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
   const [chosenEmoji, setChosenEmoji] = useState(null);
   //Get emoji is user selected
-  const onEmojiClick = (e: HTMLButtonEvent, emojiObject: EmojiProps) => {
+  const onEmojiClick = (
+    event: React.MouseEvent<Element, MouseEvent>,
+    emojiObject: any
+  ) => {
+    event.preventDefault();
     setChosenEmoji(emojiObject);
+    setDisplayEmojiPicker(false);
   };
 
-  const onDisplayEmojiPicker = (e: HTMLButtonEvent) => {
+  const onDisplayEmojiPicker = () => {
     setDisplayEmojiPicker(true);
   };
+  console.log(displayEmojiPicker);
 
   return (
     <>
-      <div onClick={onDisplayEmojiPicker}>
-        {displayEmojiPicker ? (
-          <Picker onEmojiClick={onEmojiClick} />
-        ) : (
-          <div>
-            {chosenEmoji ? (
-              <span>You chose: {chosenEmoji.emoji}</span>
-            ) : (
-              <span>No emoji Chosen</span>
-            )}
-          </div>
-        )}
+      <div className={styles.overall} onClick={onDisplayEmojiPicker}>
+        <div className={styles.emojiArea}>
+          {chosenEmoji ? (
+            <span className={styles.emoji}>{chosenEmoji.emoji}</span>
+          ) : (
+            <img src="images/CreateList/non_icon.png" alt="" />
+          )}
+        </div>
       </div>
+      {displayEmojiPicker ? (
+        <div className={styles.emojiList}>
+          <Picker onEmojiClick={onEmojiClick} />
+        </div>
+      ) : null}
     </>
   );
 };
