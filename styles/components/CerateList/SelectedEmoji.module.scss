@@ -1,0 +1,13 @@
+.overall {
+  @apply w-fit;
+  .emojiList {
+    @apply w-fit ml-[90px];
+  }
+
+  .emojiArea {
+    @apply bg-white w-fit p-[10px];
+    .emoji{
+      @apply w-fit;
+    }
+  }
+}

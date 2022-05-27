@@ -1,0 +1,14 @@
+.overall {
+  @apply w-fit;
+}
+.overall .emojiList {
+  @apply w-fit ml-[90px];
+}
+.overall .emojiArea {
+  @apply bg-white w-fit p-[10px];
+}
+.overall .emojiArea .emoji {
+  @apply w-fit;
+}
+
+/*# sourceMappingURL=SelectedEmoji.module.css.map */
