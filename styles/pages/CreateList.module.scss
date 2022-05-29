@@ -1,3 +1,6 @@
 .overall {
-  @apply mt-[31px]  w-[66%] ml-[5%] mx-auto text-gray object-contain;
+  @apply mt-[31px]  w-[86%] ml-[5%] mx-auto text-gray object-contain;
+  .upper {
+    @apply flex pb-[30px];
+  }
 }

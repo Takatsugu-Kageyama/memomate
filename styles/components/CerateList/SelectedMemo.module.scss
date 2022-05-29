@@ -1,0 +1,10 @@
+.overall {
+  @apply w-full border-t-2 border-middleGray;
+  .listText {
+    @apply text-white text-[24px] my-[20px];
+  }
+
+  .memoSearch {
+    @apply w-[40%] text-white bg-middleGray;
+  }
+}
