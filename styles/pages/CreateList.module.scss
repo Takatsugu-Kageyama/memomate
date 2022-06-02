@@ -1,6 +1,27 @@
 .overall {
-  @apply mt-[31px]  w-[86%] ml-[5%] mx-auto text-gray object-contain;
+  @apply relative mt-[31px]  w-[86%] ml-[5%] mx-auto text-gray object-contain;
   .upper {
-    @apply flex pb-[30px];
+    @apply flex;
+    .emojiArea {
+      @apply cursor-pointer flex justify-center items-center bg-white w-[200px] h-[200px] p-[10px];
+      .emoji {
+        @apply text-[94px] cursor-pointer;
+      }
+
+      img {
+        @apply mx-auto;
+      }
+    }
+
+    .picker {
+      @apply absolute z-10 top-[58%] left-0 w-fit;
+      .emojiList {
+        @apply w-fit ml-[90px] absolute top-0 left-0;
+      }
+    }
+
+    .titleInput {
+      @apply w-[40%] h-[80px] text-[53px] border-none text-white;
+    }
   }
 }

@@ -1,14 +1,20 @@
 .overall {
   @apply w-fit;
 }
-.overall .emojiList {
-  @apply w-fit ml-[90px];
-}
 .overall .emojiArea {
-  @apply bg-white w-fit p-[10px];
+  @apply cursor-pointer flex justify-center items-center bg-white w-[200px] h-[200px] p-[10px];
 }
 .overall .emojiArea .emoji {
-  @apply w-fit;
+  @apply text-[94px] cursor-pointer;
+}
+.overall .emojiArea img {
+  @apply mx-auto;
+}
+.overall .picker {
+  @apply relative z-10;
+}
+.overall .picker .emojiList {
+  @apply w-fit ml-[90px] absolute top-0 left-0;
 }
 
 /*# sourceMappingURL=SelectedEmoji.module.css.map */
