@@ -14,7 +14,7 @@
     }
 
     .picker {
-      @apply absolute z-10 top-[58%] left-0 w-fit;
+      @apply absolute z-10 top-[30%] left-[140px] w-fit;
       .emojiList {
         @apply w-fit ml-[90px] absolute top-0 left-0;
       }
