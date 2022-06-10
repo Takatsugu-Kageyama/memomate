@@ -22,10 +22,15 @@ export const sendMemoData = async (
   const db = getFirestore(firebase);
   // Add a new memo document with a generated id.
   //TODO modifier path to `user/${userId}`
-  const userDocRef = doc(db, "user/2FZqiE6tylEA6mVnND6D");
+  const userDocRef = doc(db, "user/nOOHV65WG5CVS074tQoH");
   //Add memo
   await addDoc(collection(userDocRef, "memo"), {
     memo_title: memo_title,
     memo_contents: memo_contents,
   });
+};
+
+//The function send memos list
+export const sendMemoList = async () => {
+  const db = getFirestore(firebase);
 };
