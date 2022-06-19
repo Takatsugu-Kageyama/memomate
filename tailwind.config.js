@@ -12,7 +12,8 @@ module.exports = {
                 'fadeBlack': "#121212",
                 'softWhite': "#fbfbfbfb",
                 'sub01Gray': "#181818",
-                'sub02Gray': "#282828"
+                'sub02Gray': "#282828",
+                'btnBlue': "#2FBFFF"
             },
             fontFamily: {
                 LogoTypeGothic7: ["LogoTypeGothic7"],

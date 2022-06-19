@@ -1,20 +1,23 @@
 .overall {
   @apply mt-[31px]  w-[66%] ml-[5%] text-gray object-contain;
   .memoNameInputWrap {
-    @apply w-[365px];
     .memoNameInput {
       @apply bg-fadeBlack text-white border-none text-[53px] h-[53px];
     }
 
-    .updateTimeText {
-      @apply text-[12px] mt-[18px];
+    .submitBtn {
+      @apply bg-btnBlue w-[240px] mt-[25px];
+      &:hover {
+        @apply opacity-50;
+      }
     }
   }
+
 
   .memoContainer {
     @apply flex;
     .memoContentsWrap {
-      @apply mt-[55px] basis-[80%];
+      @apply mt-[25px] basis-[80%];
       .memoContentsInput {
         @apply h-[60vh] bg-softWhite text-black;
       }
