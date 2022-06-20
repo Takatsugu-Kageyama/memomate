@@ -6,6 +6,7 @@ import {Input} from "@chakra-ui/react";
 import Picker from "emoji-picker-react";
 import dynamic from "next/dynamic";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
+import {useRouter} from "next/router";
 
 const CreateList = () => {
     const Picker = dynamic(() => import("emoji-picker-react"), {ssr: false});
@@ -14,6 +15,8 @@ const CreateList = () => {
     const [chosenEmoji, setChosenEmoji] = useState(null);
     const [isOpenPiker, setIsOpenPiker] = useState(false);
     const [listTile, setListTitle] = useState("");
+    const [listsEmoji, setListsEmoji] = useState(null);
+    const [listsMemo, setListsMemo] = useState([]);
 
     //Provide Emoji
     const onEmojiClick = (
@@ -22,7 +25,9 @@ const CreateList = () => {
     ) => {
         event.stopPropagation();
         setChosenEmoji(emojiObject);
+        setListsEmoji(chosenEmoji);
         setIsOpenPiker(false);
+        console.log(listsEmoji)
     };
 
     //Define Modal
@@ -30,6 +35,7 @@ const CreateList = () => {
         setIsOpenPiker(false);
         document.removeEventListener("click", onClosePicker);
     }, []);
+
     const onOpenPicker = (e: React.MouseEvent<Element, MouseEvent>) => {
         setIsOpenPiker(true);
         {
@@ -44,6 +50,31 @@ const CreateList = () => {
             document.removeEventListener("click", onClosePicker);
         };
     }, [onClosePicker]);
+
+    //Define function that connects to firebase
+
+    //when user visits this page
+    const router = useRouter();
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            if (router.pathname === '/CreateList') {
+                console.log("components is mounted!!");
+            }
+        }
+        router.events.on('routeChangeComplete', handleRouteChange)
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    })
+
+    //Database function
+    const sendListTitle = () => {
+        //TODO create function send data to firebase
+        console.log(listTile)
+    }
+
 
     return (
         <div className={styles.overall}>
@@ -73,6 +104,11 @@ const CreateList = () => {
                     className={styles.titleInput}
                     focusBorderColor="none"
                     placeholder="タイトルを入力"
+                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        e.preventDefault();
+                        setListTitle(e.target.value);
+                    }}
+                    onBlur={sendListTitle}
                 />
             </div>
             <SelectedMemo/>

@@ -40,4 +40,5 @@ export const sendMemoData = async (
 
 //The function send memos list
 export const sendMemoList = async () => {
+    await addDoc(collection(userDocRef, 'list'), {})
 };
