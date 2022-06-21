@@ -1,10 +1,7 @@
-export type EmojiProps = {
-  selectedEmoji: any;
-  emojiValue: {
-    emoji?: undefined;
-    unified: number;
-    activeSkinTone: string | null;
-    originalUnified: number;
-    name: string[];
-  };
+export type EmojiSchema = {
+  emoji?: string | null;
+  unified?: string | null;
+  activeSkinTone?: string | null;
+  originalUnified?: string | null;
+  name?: string[] | null[];
 };
