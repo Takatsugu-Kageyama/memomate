@@ -26,6 +26,7 @@ const CreateMemo = () => {
     const onChangeMemoDetail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         e.preventDefault();
         setMemoDetail(e.target.value);
+        console.log(memoDetail);
     };
 
     const onChangeMemoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {

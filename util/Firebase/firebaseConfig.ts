@@ -27,9 +27,11 @@ export const sendMemoData = async (
 ) => {
     if (memo_title && memo_contents) {
         //Add memo
-        await addDoc(collection(userDocRef, "memo"), {
-            memo_title: memo_title,
-            memo_contents: memo_contents,
+        const memosId = doc(collection(userDocRef,"memo")).id
+        await setDoc(doc(userDocRef, "memo", memosId), {
+            memos_id:memosId,
+            memos_title:memo_title,
+            memos_contents:memo_contents
         });
     }
 };
@@ -48,11 +50,18 @@ export const createListDatabase = async () => {
     return listCollectionId;
 };
 
-//The function upDate memos list Title
-
+//The function upDate memos list Title:
 export const upDateListsTitle = async (title: string, id: string) => {
-    const listsPath = doc(collection(db, 'list'), id);
-    await setDoc(listsPath, {
+    const listsPath = doc(collection(userDocRef, 'list'), id);
+    await updateDoc(listsPath, {
         lists_title: title
     });
+}
+
+//The function upDate memos lists icon:
+export const upDateListsIcon = async (emoji:string ,id:string) => {
+    const listsPath = doc(collection(userDocRef, 'list'), id);
+    await updateDoc(listsPath,{
+        lists_emoji:emoji
+    })
 }

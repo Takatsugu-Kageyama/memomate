@@ -8,29 +8,30 @@ import dynamic from "next/dynamic";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
 import {useRouter} from "next/router";
 import {EmojiSchema} from "../util/TypeDefinition/EmojiSchema";
-import {createListDatabase, upDateListsTitle} from "../util/Firebase/firebaseConfig";
+import {createListDatabase, upDateListsIcon, upDateListsTitle} from "../util/Firebase/firebaseConfig";
 
 const CreateList = () => {
     const Picker = dynamic(() => import("emoji-picker-react"), {ssr: false});
 
     //Create state
-    const [chosenEmoji, setChosenEmoji] = useState<EmojiSchema | null>(null);
+    const [chosenEmoji, setChosenEmoji] = useState<EmojiSchema | null >(null);
     const [isOpenPiker, setIsOpenPiker] = useState(false);
     const [listTile, setListTitle] = useState("");
     const [listsMemo, setListsMemo] = useState([]);
     const [currentListId, setCurrentListId] = useState('');
 
     //Provide Emoji
-    const onEmojiClick = (
+    const onEmojiClick =   (
         event: React.MouseEvent<Element, MouseEvent>,
         emojiObject: EmojiSchema
     ) => {
         event.stopPropagation();
         setChosenEmoji(emojiObject);
         setIsOpenPiker(false);
-        console.log(emojiObject.emoji);
+        if (emojiObject.emoji != null) {
+            upDateListsIcon(emojiObject.emoji, currentListId).then(null)
+        }
     };
-
     //Define Modal
     const onClosePicker = useCallback(() => {
         setIsOpenPiker(false);
