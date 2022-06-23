@@ -1,9 +1,8 @@
 import {
-    addDoc,
     collection,
-    doc,
-    getFirestore,
-    setDoc, updateDoc,
+    doc, endAt, getDocs,
+    getFirestore, orderBy, query, serverTimestamp,
+    setDoc, startAt, updateDoc, where
 } from "@firebase/firestore";
 
 //import type definition
@@ -27,11 +26,12 @@ export const sendMemoData = async (
 ) => {
     if (memo_title && memo_contents) {
         //Add memo
-        const memosId = doc(collection(userDocRef,"memo")).id
+        const memosId = doc(collection(userDocRef, "memo")).id
         await setDoc(doc(userDocRef, "memo", memosId), {
-            memos_id:memosId,
-            memos_title:memo_title,
-            memos_contents:memo_contents
+            memos_id: memosId,
+            memos_title: memo_title,
+            memos_contents: memo_contents,
+            memos_upDate_time: serverTimestamp()
         });
     }
 };
@@ -44,6 +44,7 @@ export const createListDatabase = async () => {
         lists_emoji: "",
         lists_title: "",
         lists_memo: [],
+        lists_upDate_time: serverTimestamp(),
         list_id: listCollectionId　//Document ID of current data
     });
 
@@ -54,14 +55,30 @@ export const createListDatabase = async () => {
 export const upDateListsTitle = async (title: string, id: string) => {
     const listsPath = doc(collection(userDocRef, 'list'), id);
     await updateDoc(listsPath, {
-        lists_title: title
+        lists_title: title,
+        lists_upDate_time: serverTimestamp()
     });
 }
 
 //The function upDate memos lists icon:
-export const upDateListsIcon = async (emoji:string ,id:string) => {
+export const upDateListsIcon = async (emoji: string, id: string) => {
     const listsPath = doc(collection(userDocRef, 'list'), id);
-    await updateDoc(listsPath,{
-        lists_emoji:emoji
+    await updateDoc(listsPath, {
+        lists_emoji: emoji,
+        lists_upDate_time: serverTimestamp()
     })
+}
+
+//The function search lists memo
+export const searchMemo = async (value: string) => {
+    const queryMemo = query(collection(userDocRef, "memo"), orderBy('memos_title'), startAt(value), endAt(value + '\uf8ff'));
+    const memoSnapshot = await getDocs(queryMemo);
+    const resultMemosData: any = [];
+    memoSnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        resultMemosData.push(doc.data())
+    });
+    if (resultMemosData.length !== 0) {
+        return resultMemosData
+    }
 }
