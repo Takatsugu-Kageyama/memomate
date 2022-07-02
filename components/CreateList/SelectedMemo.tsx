@@ -7,8 +7,9 @@ import {searchMemo} from "../../util/Firebase/firebaseConfig";
 import ResultMemoCard from "./ResultMemoCard";
 
 
-const SelectedMemo = () => {
+const SelectedMemo = ({currentListId}:any) => {
     const [memosValue, setMemosValue] = useState()
+
 
     const isInputChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
         const searchValue = e.target.value;
@@ -24,7 +25,7 @@ const SelectedMemo = () => {
     return <div className={styles.overall}>
         <p className={styles.listText}>追加したいメモを検索して、メモリストを作りましょう</p>
         <Input onInput={isInputChange} className={styles.memoSearch} focusBorderColor='none' placeholder='メモを検索'/>
-        <ResultMemoCard memosValue={memosValue}/>
+        <ResultMemoCard memosValue={memosValue} currentListId={currentListId}/>
     </div>
 };
 export default SelectedMemo

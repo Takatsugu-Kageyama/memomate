@@ -17,7 +17,6 @@ const CreateList = () => {
     const [chosenEmoji, setChosenEmoji] = useState<EmojiSchema | null >(null);
     const [isOpenPiker, setIsOpenPiker] = useState(false);
     const [listTile, setListTitle] = useState("");
-    const [listsMemo, setListsMemo] = useState([]);
     const [currentListId, setCurrentListId] = useState('');
 
     //Provide Emoji
@@ -113,7 +112,7 @@ const CreateList = () => {
                     onBlur={sendListTitle}
                 />
             </div>
-            <SelectedMemo/>
+            <SelectedMemo currentListId={currentListId}/>
         </div>
     );
 };

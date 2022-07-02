@@ -1,4 +1,5 @@
 import {
+    arrayUnion,
     collection,
     doc, endAt, getDocs,
     getFirestore, orderBy, query, serverTimestamp,
@@ -81,4 +82,14 @@ export const searchMemo = async (value: string) => {
     if (resultMemosData.length !== 0) {
         return resultMemosData
     }
+}
+
+//The function add the memo is selected by user to the list:
+export const addListsMemo = async (memosId:string,listsId:string) => {
+    const listsPath = doc(collection(userDocRef, 'list'), listsId);
+
+    await updateDoc(listsPath, {
+        lists_memo: arrayUnion(memosId),
+        lists_upDate_time: serverTimestamp()
+    });
 }

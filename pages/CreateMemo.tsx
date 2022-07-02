@@ -42,39 +42,6 @@ const CreateMemo = () => {
         })
     }
 
-    /*
-    //the State which save memo detail
-    const [memoTitle, setMemoTitle] = useState("");
-    const [memoContents, setMemoContents] = useState("");
-
-    const onChangeMemoContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setMemoContents(e.target.value);
-    };
-
-    const onChangeMemoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMemoTitle(e.target.value);
-    };
-
-    const router = useRouter();
-    // router.events.on("routeChangeStart", saveMemo);
-
-    useEffect(() => {
-        const saveMemo = () => {
-            sendMemoData(memoTitle, memoContents).then((r) => null);
-        };
-
-        router.events.on("routeChangeStart", saveMemo);
-
-        // If the component is unmounted, unsubscribe
-        // from the event with the `off` method:
-
-        return () => {
-            router.events.off("routeChangeStart", saveMemo);
-        };
-    }, []);
-
-     */
-
     return (
         <div className={styles.overall}>
             <Head>
