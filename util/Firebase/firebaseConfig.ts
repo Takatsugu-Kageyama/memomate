@@ -92,4 +92,6 @@ export const addListsMemo = async (memosId:string,listsId:string) => {
         lists_memo: arrayUnion(memosId),
         lists_upDate_time: serverTimestamp()
     });
+
+    return memosId
 }
