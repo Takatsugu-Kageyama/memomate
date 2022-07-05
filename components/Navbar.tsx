@@ -9,8 +9,13 @@ import {
     AddBoxOutlined,
     NoteAddOutlined,
 } from "@mui/icons-material";
+import {useState} from "react";
+
 
 const Navbar = () => {
+    const [memosObj,setMemosObj] = useState();
+
+
     return (
         <div className={styles.navbarWrap}>
             {/*Navigation Area*/}
@@ -61,7 +66,9 @@ const Navbar = () => {
                 {/*Display All Memo which is written by user */}
                 <div className={styles.memoSum}>
                     <p className={styles.memoSumHead}>メモ一覧</p>
-                    <div className={styles.memoList}></div>
+                    <div className={styles.memoList}>
+
+                    </div>
                 </div>
             </div>
         </div>

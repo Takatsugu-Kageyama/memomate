@@ -19,9 +19,27 @@
         @apply w-fit ml-[90px] absolute top-0 left-0;
       }
     }
+    .titleArea{
+      @apply flex flex-col;
+      .titleInput {
+        @apply w-fit h-[80px] text-[53px] border-none text-white;
+      }
+      .favorBtn{
+        @apply w-fit;
+        .favorite{
+          @apply text-[35px] ml-[20px];
 
-    .titleInput {
-      @apply w-[40%] h-[80px] text-[53px] border-none text-white;
+          &:hover{
+            @apply cursor-pointer;
+          }
+        }
+        .favorited{
+          @apply text-[35px] ml-[20px] text-btnBlue;
+          &:hover{
+            @apply cursor-pointer;
+          }
+        }
+      }
     }
   }
 }

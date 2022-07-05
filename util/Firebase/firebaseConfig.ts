@@ -45,6 +45,7 @@ export const createListDatabase = async () => {
         lists_emoji: "",
         lists_title: "",
         lists_memo: [],
+        lists_favorite:false,
         lists_upDate_time: serverTimestamp(),
         list_id: listCollectionId　//Document ID of current data
     });
@@ -66,6 +67,15 @@ export const upDateListsIcon = async (emoji: string, id: string) => {
     const listsPath = doc(collection(userDocRef, 'list'), id);
     await updateDoc(listsPath, {
         lists_emoji: emoji,
+        lists_upDate_time: serverTimestamp()
+    })
+}
+
+//The function upDate memos lists favorite:
+export const upDateListsFavorite = async (favorValue:boolean,id:string) => {
+    const listsPath = doc(collection(userDocRef, 'list'), id);
+    await updateDoc(listsPath, {
+        lists_favorite:favorValue,
         lists_upDate_time: serverTimestamp()
     })
 }
@@ -94,4 +104,17 @@ export const addListsMemo = async (memosId:string,listsId:string) => {
     });
 
     return memosId
+}
+
+//The function get all memos on databse:
+
+export const getAllMemo = async () => {
+    const queryAllMemo = query(collection(userDocRef, "memo"), orderBy('lists_upDate_time'))
+    const allMemoSnapshot = await getDocs(queryAllMemo);
+    const allMemoData:any[] = []
+    allMemoSnapshot.forEach((doc)=>{
+        allMemoData.push(doc.data())
+    })
+
+    return allMemoData
 }

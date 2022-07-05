@@ -5,12 +5,13 @@ import {useEffect, useState} from "react";
 import {addListsMemo} from "../../util/Firebase/firebaseConfig";
 
 const ResultMemoCard = ({memosValue,currentListId,selectedMemo}: any) => {
+    let latestMemosValue = memosValue;
 
     return <>
 
         {
 
-            memosValue? memosValue.map((memosData:any) => {
+            latestMemosValue? latestMemosValue.map((memosData:any) => {
                     return (
                         <div key={memosData.memos_id } className={styles.overall}>
                             <div className={styles.memosDetail}>

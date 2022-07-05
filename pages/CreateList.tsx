@@ -8,7 +8,16 @@ import dynamic from "next/dynamic";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
 import {useRouter} from "next/router";
 import {EmojiSchema} from "../util/TypeDefinition/EmojiSchema";
-import {createListDatabase, upDateListsIcon, upDateListsTitle} from "../util/Firebase/firebaseConfig";
+import {
+    createListDatabase,
+    upDateListsFavorite,
+    upDateListsIcon,
+    upDateListsTitle
+} from "../util/Firebase/firebaseConfig";
+
+//import GUI
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 
 const CreateList = () => {
     const Picker = dynamic(() => import("emoji-picker-react"), {ssr: false});
@@ -18,7 +27,7 @@ const CreateList = () => {
     const [isOpenPiker, setIsOpenPiker] = useState(false);
     const [listTile, setListTitle] = useState("");
     const [currentListId, setCurrentListId] = useState('');
-
+    const [isFavorite,setIsFavorite] = useState(false);
     //Provide Emoji
     const onEmojiClick =   (
         event: React.MouseEvent<Element, MouseEvent>,
@@ -77,6 +86,13 @@ const CreateList = () => {
         upDateListsTitle(listTile, currentListId).then(null);
     };
 
+    //favorite function
+    /*
+        useEffect(()=>{
+        upDateListsFavorite(isFavorite,currentListId).then(null)
+    },[isFavorite])
+     */
+
     return (
         <div className={styles.overall}>
             <div className={styles.upper}>
@@ -101,16 +117,33 @@ const CreateList = () => {
                     ) : null}
                 </div>
                 {/*Tittle Area*/}
-                <Input
-                    className={styles.titleInput}
-                    focusBorderColor="none"
-                    placeholder="タイトルを入力"
-                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        e.preventDefault();
-                        setListTitle(e.target.value);
-                    }}
-                    onBlur={sendListTitle}
-                />
+                <div className={styles.titleArea}>
+                    <Input
+                        className={styles.titleInput}
+                        focusBorderColor="none"
+                        placeholder="タイトルを入力"
+                        onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            e.preventDefault();
+                            setListTitle(e.target.value);
+                        }}
+                        onBlur={sendListTitle}
+                    />
+                    <button className={styles.favorBtn} onClick={() =>{
+                        if (!isFavorite){
+                            setIsFavorite(true);
+                            upDateListsFavorite(true,currentListId)
+                        }else {
+                            setIsFavorite(false);
+                            upDateListsFavorite(false,currentListId)
+                        }
+                    }}>
+                        {isFavorite ?
+                            <StarIcon className={styles.favorited}/>
+                            :
+                            <StarBorderIcon className={styles.favorite}/>
+                            }
+                    </button>
+                </div>
             </div>
             <SelectedMemo currentListId={currentListId}/>
         </div>
