@@ -9,13 +9,14 @@ import {
     AddBoxOutlined,
     NoteAddOutlined,
 } from "@mui/icons-material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getAllMemo} from "../util/Firebase/firebaseConfig";
 
 
 const Navbar = () => {
-    const [memosObj,setMemosObj] = useState();
+    const [memosObj,setMemosObj] = useState(null);
 
-
+    // @ts-ignore
     return (
         <div className={styles.navbarWrap}>
             {/*Navigation Area*/}
@@ -67,7 +68,6 @@ const Navbar = () => {
                 <div className={styles.memoSum}>
                     <p className={styles.memoSumHead}>メモ一覧</p>
                     <div className={styles.memoList}>
-
                     </div>
                 </div>
             </div>
