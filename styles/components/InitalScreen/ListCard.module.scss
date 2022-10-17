@@ -3,20 +3,30 @@
   .recentCardWrap {
     @apply bg-sub01Gray rounded-[5px] basis-auto p-[18px] flex flex-col cursor-pointer grow-[8];
     backface-visibility: hidden;
-
     .recentListCardIconContainer {
       @apply basis-auto h-[150px] bg-softWhite border-2 border-black rounded-[5px] flex flex-col justify-center;
       .recentCardIcon {
         @apply w-fit mx-auto;
       }
     }
-
     .listName {
       @apply text-[16px] text-gray mt-[18px];
     }
-
     &:hover {
       @apply bg-sub02Gray;
+    }
+    &:nth-last-child(3){
+      @apply hidden xl:block;
+    }
+    &:nth-last-child(4) {
+      @apply hidden xl:block;
+    }
+    //Add two blocks when window size is desk top;
+    &:nth-last-child(2){
+      @apply hidden 2xl:block;
+    }
+    &:last-child {
+      @apply hidden 2xl:block;
     }
   }
 }

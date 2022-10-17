@@ -1,9 +1,10 @@
 .recentCardAreaOverall {
-  @apply flex justify-between;
+  @apply flex gap-[1%];
 }
 .recentCardAreaOverall .recentCardWrap {
   @apply bg-sub01Gray rounded-[5px] basis-auto p-[18px] flex flex-col cursor-pointer grow-[8];
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .recentCardAreaOverall .recentCardWrap .recentListCardIconContainer {
   @apply basis-auto h-[150px] bg-softWhite border-2 border-black rounded-[5px] flex flex-col justify-center;
@@ -17,5 +18,16 @@
 .recentCardAreaOverall .recentCardWrap:hover {
   @apply bg-sub02Gray;
 }
-
+.recentCardAreaOverall .recentCardWrap:nth-last-child(3) {
+  @apply hidden xl:block;
+}
+.recentCardAreaOverall .recentCardWrap:nth-last-child(4) {
+  @apply hidden xl:block;
+}
+.recentCardAreaOverall .recentCardWrap:nth-last-child(2) {
+  @apply hidden 2xl:block;
+}
+.recentCardAreaOverall .recentCardWrap:last-child {
+  @apply hidden 2xl:block;
+}
 /*# sourceMappingURL=ListCard.module.css.map */

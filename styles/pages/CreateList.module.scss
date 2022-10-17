@@ -19,25 +19,31 @@
         @apply w-fit ml-[90px] absolute top-0 left-0;
       }
     }
-    .titleArea{
+    .titleArea {
       @apply flex flex-col;
       .titleInput {
         @apply w-fit h-[80px] text-[53px] border-none text-white;
       }
-      .favorBtn{
+      .favorBtn {
         @apply w-fit;
-        .favorite{
+        .favorite {
           @apply text-[35px] ml-[20px];
 
-          &:hover{
+          &:hover {
             @apply cursor-pointer;
           }
         }
-        .favorited{
+        .favorited {
           @apply text-[35px] ml-[20px] text-btnBlue;
-          &:hover{
+          &:hover {
             @apply cursor-pointer;
           }
+        }
+      }
+      .saveBtn {
+        @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-btnBlue text-softWhite rounded-[18px];
+        &:hover {
+          @apply opacity-[70%];
         }
       }
     }
