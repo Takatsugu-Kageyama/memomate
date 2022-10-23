@@ -1,16 +1,13 @@
 //import styles
 import styles from "../../styles/components/CerateList/ResultMemoCard.module.scss";
 import { Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { addListsMemo } from "../../util/Firebase/firebaseConfig";
+import { addListsMemo } from "../../util/Firebase/AddMemoList";
 
-const ResultMemoCard = ({ memosValue, currentListId, selectedMemo }: any) => {
-  let latestMemosValue = memosValue;
-
+const ResultMemoCard = ({ memosValue, currentListId}: any) => {
   return (
     <>
-      {latestMemosValue
-        ? latestMemosValue.map((memosData: any) => {
+      {memosValue
+        ? memosValue.map((memosData: any) => {
             return (
               <div key={memosData.memos_id} className={styles.overall}>
                 <div className={styles.memosDetail}>

@@ -1,0 +1,2 @@
+.overall{@apply mt-[20px] w-full border-t-2 border-middleGray}.overall .listText{@apply text-white text-[24px] my-[20px]}.overall .memoSearch{@apply w-[40%] text-white bg-middleGray}.overall .searchOverall .memosCard{@apply w-full rounded-[8px] mt-[30px] py-[20px] bg-fadeGray}.overall .searchOverall .memosCard .memosDetail{@apply flex w-[98%] mx-auto items-center justify-between}.overall .searchOverall .memosCard:hover{@apply bg-middleGray cursor-pointer text-white}
+/*# sourceMappingURL=SelectedMemo.module.min.css.map */

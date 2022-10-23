@@ -1,5 +1,6 @@
 import { doc, collection, endAt, getDocs, orderBy, query, startAt } from "@firebase/firestore";
 import { db } from "./firebaseConfig";
+import { MemosType } from "../TypeDefinition/MemosSchma";
 
 //The function search lists memo
 export const searchMemo = async (value: string) => {
@@ -12,12 +13,14 @@ export const searchMemo = async (value: string) => {
     startAt(value),
     endAt(value + "\uf8ff")
   );
-  const memoSnapshot = await getDocs(queryMemo);
-  const resultMemosData: any = [];
-  memoSnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    resultMemosData.push(doc.data());
-  });
+  const memoSnapshot = await getDocs(queryMemo)
+  if (memoSnapshot) {
+    const resultMemosData:MemosType[]  = [];
+    memoSnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      resultMemosData.push(doc.data());
+    }); 
+  }
   if (resultMemosData.length !== 0) {
     return resultMemosData;
   }

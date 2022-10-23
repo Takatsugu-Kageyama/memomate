@@ -55,19 +55,7 @@ export const upDateListsFavorite = async (favorValue: boolean, id: string) => {
   });
 };
 
-//The function add the memo is selected by user to the list:
-export const addListsMemo = async (memosId: string, listsId: string) => {
-  const listsPath = doc(collection(userDocRef, "list"), listsId);
-
-  await updateDoc(listsPath, {
-    lists_memo: arrayUnion(memosId),
-    lists_upDate_time: serverTimestamp(),
-  });
-
-  return memosId;
-};
-
-//The function get all memos on databse:
+//The function get all memos from database:
 
 export const getAllMemo = async () => {
   const queryAllMemo = query(collection(userDocRef, "memo"), orderBy("lists_upDate_time"));
