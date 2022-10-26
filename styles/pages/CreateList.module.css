@@ -34,10 +34,10 @@
 .overall .upper .titleArea .favorBtn .favorite:hover {
   @apply cursor-pointer;
 }
-.overall .upper .titleArea .favorBtn .favorited {
+.overall .upper .titleArea .favorBtn .favored {
   @apply text-[35px] ml-[20px] text-btnBlue;
 }
-.overall .upper .titleArea .favorBtn .favorited:hover {
+.overall .upper .titleArea .favorBtn .favored:hover {
   @apply cursor-pointer;
 }
 .overall .upper .titleArea .saveBtn {

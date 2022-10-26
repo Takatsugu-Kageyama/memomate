@@ -15,21 +15,33 @@ import StarIcon from "@mui/icons-material/Star";
 
 const CreateList = () => {
   const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-
-  //Create state
+  //! Per lists detail state:
+  //store lists title
+  const [listsTitle, setListsTitle] = useState<string | null>();
+  //store Emojis object:
   const [chosenEmoji, setChosenEmoji] = useState<EmojiSchema | null>(null);
-  const [isOpenPiker, setIsOpenPiker] = useState(false);
-  const [listTile, setListTitle] = useState("");
-  const [currentListId, setCurrentListId] = useState("");
+  //store favorite:
   const [isFavorite, setIsFavorite] = useState(false);
+  
+  //!store Lists contents:
+  const [listContents, setListsContents] = useState<ListSchema>({
+    title: null,
+    emoji: chosenEmoji,
+    memos: [],
+    favorite: isFavorite,
+  });
+  const [currentListId, setCurrentListId] = useState("");
+  //check whether Piker is open or not:
+  const [isOpenPiker, setIsOpenPiker] = useState(false);
   //Provide Emoji
   const onEmojiClick = (event: React.MouseEvent<Element, MouseEvent>, emojiObject: EmojiSchema) => {
     event.stopPropagation();
+    setListsContents({ ...listContents, emoji: emojiObject });
     setChosenEmoji(emojiObject);
     setIsOpenPiker(false);
-    if (emojiObject.emoji != null) {
-      upDateListsIcon(emojiObject.emoji, currentListId).then(null);
-    }
+    // if (emojiObject.emoji != null) {
+    //   upDateListsIcon(emojiObject.emoji, currentListId).then(null);
+    // }
   };
   //Define Modal
   const onClosePicker = useCallback(() => {
@@ -52,14 +64,19 @@ const CreateList = () => {
     };
   }, [onClosePicker]);
 
-  const testObj: {
-    title: string;
-    array: string[];
-  } = {
-    title: "test",
-    array: ["Hello", "Takatsugu"],
-  };
-  console.log(testObj.array[0]);
+  // const testObj: {
+  //   title: string;
+  //   array: Array<{ title: string; contents: string }>;
+  // } = {
+  //   title: "test",
+  //   array: [
+  //     {
+  //       title: "こんにちは",
+  //       contents: "this is test.",
+  //     },
+  //   ],
+  // };
+  // console.log(testObj.array[0]);
 
   return (
     <div className={styles.overall}>
@@ -92,7 +109,7 @@ const CreateList = () => {
             placeholder="タイトルを入力"
             onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
               e.preventDefault();
-              setListTitle(e.target.value);
+              // setListTitle(e.target.value);
             }}
           />
           <button
@@ -100,14 +117,14 @@ const CreateList = () => {
             onClick={() => {
               if (!isFavorite) {
                 setIsFavorite(true);
-                upDateListsFavorite(true, currentListId);
+                // upDateListsFavorite(true, currentListId);
               } else {
                 setIsFavorite(false);
-                upDateListsFavorite(false, currentListId);
+                // upDateListsFavorite(false, currentListId);
               }
             }}
           >
-            {isFavorite ? <StarIcon className={styles.favorited} /> : <StarBorderIcon className={styles.favorite} />}
+            {isFavorite ? <StarIcon className={styles.favored} /> : <StarBorderIcon className={styles.favorite} />}
           </button>
           <button onClick={() => {}} className={styles.saveBtn}>
             保存する
