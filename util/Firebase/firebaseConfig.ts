@@ -1,17 +1,12 @@
 import {
-  arrayUnion,
   collection,
   doc,
-  endAt,
   getDocs,
   getFirestore,
   orderBy,
   query,
   serverTimestamp,
-  setDoc,
-  startAt,
   updateDoc,
-  where,
 } from "@firebase/firestore";
 
 //import type definition

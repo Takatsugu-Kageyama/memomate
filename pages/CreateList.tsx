@@ -5,12 +5,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Input } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
+import { upDateListsFavorite, upDateListsIcon } from "../util/Firebase/firebaseConfig";
+//import TypeDefinition
+import { ListSchema } from "../util/TypeDefinition/ListSchema";
 import { EmojiSchema } from "../util/TypeDefinition/EmojiSchema";
-import {
-  upDateListsFavorite,
-  upDateListsIcon,
-} from "../util/Firebase/firebaseConfig";
-
 //import GUI
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
@@ -53,6 +51,15 @@ const CreateList = () => {
       document.removeEventListener("click", onClosePicker);
     };
   }, [onClosePicker]);
+
+  const testObj: {
+    title: string;
+    array: string[];
+  } = {
+    title: "test",
+    array: ["Hello", "Takatsugu"],
+  };
+  console.log(testObj.array[0]);
 
   return (
     <div className={styles.overall}>
@@ -102,9 +109,9 @@ const CreateList = () => {
           >
             {isFavorite ? <StarIcon className={styles.favorited} /> : <StarBorderIcon className={styles.favorite} />}
           </button>
-          <button onClick={()=>{
-            
-          }} className={styles.saveBtn}>保存する</button>
+          <button onClick={() => {}} className={styles.saveBtn}>
+            保存する
+          </button>
         </div>
       </div>
       <SelectedMemo currentListId={currentListId} />
