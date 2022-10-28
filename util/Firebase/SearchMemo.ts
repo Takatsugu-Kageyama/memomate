@@ -1,6 +1,6 @@
 import { doc, collection, endAt, getDocs, orderBy, query, startAt } from "@firebase/firestore";
 import { db } from "./firebaseConfig";
-import { MemosType } from "../TypeDefinition/MemosSchma";
+import { MemosType } from "../TypeDefinition/MemosSchema";
 
 //The function search lists memo
 export const searchMemo = async (value: string) => {
@@ -15,13 +15,13 @@ export const searchMemo = async (value: string) => {
   );
   const memoSnapshot = await getDocs(queryMemo)
   if (memoSnapshot) {
-    const resultMemosData:MemosType[]  = [];
+    const resultMemosData:Array<MemosType>  = [];
     memoSnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      resultMemosData.push(doc.data());
+      resultMemosData.push(doc.data() as MemosType);
     }); 
-  }
-  if (resultMemosData.length !== 0) {
-    return resultMemosData;
+    if (resultMemosData.length !== 0) {
+      return resultMemosData;
+    }
   }
 };

@@ -41,7 +41,7 @@
   @apply cursor-pointer;
 }
 .overall .upper .titleArea .saveBtn {
-  @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-btnBlue text-softWhite rounded-[18px];
+  @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-btnBlue text-softWhite rounded-[30px];
 }
 .overall .upper .titleArea .saveBtn:hover {
   @apply opacity-[70%];

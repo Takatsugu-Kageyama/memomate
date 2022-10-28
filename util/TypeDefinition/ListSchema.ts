@@ -1,5 +1,5 @@
 import { EmojiSchema } from "./EmojiSchema";
-import { MemosType } from "./MemosSchma";
+import { MemosType } from "./MemosSchema";
 
 export type ListSchema = {
   title: string | null;

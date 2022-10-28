@@ -22,7 +22,7 @@ const CreateList = () => {
   const [chosenEmoji, setChosenEmoji] = useState<EmojiSchema | null>(null);
   //store favorite:
   const [isFavorite, setIsFavorite] = useState(false);
-  
+
   //!store Lists contents:
   const [listContents, setListsContents] = useState<ListSchema>({
     title: null,
@@ -30,6 +30,9 @@ const CreateList = () => {
     memos: [],
     favorite: isFavorite,
   });
+
+  console.log(listContents);
+
   const [currentListId, setCurrentListId] = useState("");
   //check whether Piker is open or not:
   const [isOpenPiker, setIsOpenPiker] = useState(false);
@@ -39,9 +42,6 @@ const CreateList = () => {
     setListsContents({ ...listContents, emoji: emojiObject });
     setChosenEmoji(emojiObject);
     setIsOpenPiker(false);
-    // if (emojiObject.emoji != null) {
-    //   upDateListsIcon(emojiObject.emoji, currentListId).then(null);
-    // }
   };
   //Define Modal
   const onClosePicker = useCallback(() => {
