@@ -1,13 +1,18 @@
 //import ChakraUI
 import { Input } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 //import styles
 import styles from "../../styles/components/CerateList/SelectedMemo.module.scss";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
+//import Firebase
 import { searchMemo } from "../../util/Firebase/SearchMemo";
-import { Button } from "@chakra-ui/react";
+//import Type Definition
 import { MemosType } from "../../util/TypeDefinition/MemosSchema";
 
-const SelectedMemo = ({ currentListId }: any) => {
+const SelectedMemo: FC<{ changedData: () => void; upDateListsMemos: (value: Array<MemosType>) => void }> = ({
+  changedData,
+  upDateListsMemos,
+}) => {
   //Store memo
   const [memosValue, setMemosValue] = useState<Array<MemosType>>([]);
   const [nonSelectedMemos, setNoneSelectedMemos] = useState<Array<MemosType>>([]);
@@ -16,12 +21,10 @@ const SelectedMemo = ({ currentListId }: any) => {
   //Display all memo depends on keyword:
   const isInputChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
     const searchValue: string = e.target.value;
-    console.log(searchValue);
     if (searchValue) {
       searchMemo(searchValue).then((value) => {
         if (typeof value !== "undefined") {
           setMemosValue(value);
-          console.log(memosValue, typeof memosValue);
         }
       });
     }
@@ -29,12 +32,18 @@ const SelectedMemo = ({ currentListId }: any) => {
 
   useEffect(() => {
     setNoneSelectedMemos(
-      memosValue.filter((memosRow) =>
-        selectedMemo.filter((selectedMemosRow) => memosRow.memos_id === selectedMemosRow.memos_id).length === 0
+      memosValue.filter(
+        (memosRow) =>
+          selectedMemo.filter((selectedMemosRow) => memosRow.memos_id === selectedMemosRow.memos_id).length === 0
       )
     );
+    console.log(selectedMemo);
   }, [memosValue, selectedMemo]);
-  console.log(nonSelectedMemos);
+
+  useEffect(() => {
+    upDateListsMemos(selectedMemo);
+  },[selectedMemo,nonSelectedMemos]);
+
   return (
     <div className={styles.overall}>
       <div className={styles.selectedMemos}>
@@ -48,6 +57,7 @@ const SelectedMemo = ({ currentListId }: any) => {
                       colorScheme="blue"
                       onClick={() => {
                         setSelectedMemo(selectedMemo.filter((memo) => memo.memos_id !== memos.memos_id));
+                        changedData();
                       }}
                       className={styles.memoAdd}
                       _hover={{ bg: "none", color: "#2FBFFF" }}
@@ -73,9 +83,8 @@ const SelectedMemo = ({ currentListId }: any) => {
                     <Button
                       colorScheme="blue"
                       onClick={() => {
-                        // addListsMemo(memosData.memos_id, currentListId);
                         setSelectedMemo([...selectedMemo, memosData]);
-                        console.log(selectedMemo);
+                        changedData();
                       }}
                       className={styles.memoAdd}
                       _hover={{ bg: "none", color: "#2FBFFF" }}

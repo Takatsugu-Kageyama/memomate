@@ -3,7 +3,9 @@ import { MemosType } from "./MemosSchema";
 
 export type ListSchema = {
   title: string | null;
-  emoji?: EmojiSchema | null;
-  memos?:Array<MemosType>;
+  emoji: string | undefined;
+  memos: Array<MemosType>;
   favorite?: boolean;
+  upDateTime?: string;
+  listsId?: string;
 };

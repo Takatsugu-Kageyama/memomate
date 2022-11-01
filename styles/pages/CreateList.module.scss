@@ -46,6 +46,12 @@
           @apply opacity-[70%];
         }
       }
+      .savedBtn {
+        @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-gray text-softWhite rounded-[30px];
+        &:hover {
+          @apply opacity-[70%];
+        }
+      }
     }
   }
 }

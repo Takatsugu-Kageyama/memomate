@@ -46,4 +46,10 @@
 .overall .upper .titleArea .saveBtn:hover {
   @apply opacity-[70%];
 }
+.overall .upper .titleArea .savedBtn {
+  @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-gray text-softWhite rounded-[30px];
+}
+.overall .upper .titleArea .savedBtn:hover {
+  @apply opacity-[70%];
+}
 /*# sourceMappingURL=CreateList.module.css.map */
