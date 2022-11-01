@@ -3,7 +3,18 @@
   .listText {
     @apply text-white text-[24px] my-[20px];
   }
+  .selectedMemos {
+    .memosCard {
+      @apply w-full rounded-[8px] mt-[30px] py-[20px] bg-fadeGray;
+      .memosDetail {
+        @apply flex w-[98%] mx-auto items-center justify-between;
+      }
 
+      &:hover {
+        @apply bg-middleGray cursor-pointer text-white;
+      }
+    }
+  }
   .memoSearch {
     @apply w-[40%] text-white bg-middleGray;
   }

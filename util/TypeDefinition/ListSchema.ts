@@ -1,9 +1,11 @@
 import { EmojiSchema } from "./EmojiSchema";
-import { MemosType } from "./MemosSchma";
+import { MemosType } from "./MemosSchema";
 
 export type ListSchema = {
-  title: string;
-  emoji: EmojiSchema;
-  memos: MemosType[];
-  favorite:boolean,
+  title: string | null;
+  emoji: string | undefined;
+  memos: Array<MemosType>;
+  favorite?: boolean;
+  upDateTime?: string;
+  listsId?: string;
 };
