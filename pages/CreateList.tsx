@@ -65,7 +65,7 @@ const CreateList = () => {
       throw "Abort route";
     }
   };
-  const beforeUnloadHandler = (e) => {
+  const beforeUnloadHandler = (e:any) => {
     e.returnValue = "入力内容が保存されていません、本当にページを離れますか？";
   };
   //When user reload this page if contents is not saved:
