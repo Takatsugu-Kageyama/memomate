@@ -6,13 +6,16 @@ import Head from "next/head";
 import { Button, Textarea } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-import { sendMemoData } from "../util/Firebase/SendMemo"; 
-import React, { useState } from "react";
+import { sendMemoData } from "../util/Firebase/SendMemo";
+import { getLists } from "../util/Firebase/GetLists";
+import React, { useEffect, useState } from "react";
+import { ListSchema } from "../util/TypeDefinition/ListSchema";
 
 //send memo contents to database
 const CreateMemo = () => {
-  const [memoTitle, setMemoTitle] = useState("");
-  const [memoDetail, setMemoDetail] = useState("");
+  const [memoTitle, setMemoTitle] = useState<string>("");
+  const [memoDetail, setMemoDetail] = useState<string>("");
+  const [savedList, setSavedList] = useState<Array<ListSchema>>([]);
 
   const onChangeMemoDetail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -24,6 +27,15 @@ const CreateMemo = () => {
     e.preventDefault();
     setMemoTitle(e.target.value);
   };
+
+  useEffect(() => {
+    getLists().then((value) => {
+      if (typeof value !== "undefined") {
+        setSavedList(value);
+      }
+      console.log(value);
+    });
+  }, []);
 
   return (
     <div className={styles.overall}>
@@ -69,28 +81,21 @@ const CreateMemo = () => {
         <div className={styles.addListBtn}>
           {/*Add memo to the list*/}
           {/*TODO Get all  lists which is stored in database */}
-          <Menu>
-            <MenuButton
-              as={Button}
-              px={4}
-              py={2}
-              transition="all 0.2s"
-              borderRadius="md"
-              borderWidth="1px"
-              _hover={{ bg: "#555555" }}
-              _expanded={{ bg: "#282828" }}
-              _focus={{ boxShadow: "outline" }}
-            >
-              リストに追加
-            </MenuButton>
-            <MenuList>
-              <MenuItem>リスト#1</MenuItem>
-              <MenuItem>リスト#2</MenuItem>
-              <MenuItem>リスト#3</MenuItem>
-              <MenuItem>リスト#4</MenuItem>
-              <MenuItem>リスト#5</MenuItem>
-            </MenuList>
-          </Menu>
+          <select name="" id="">
+            <option value="" selected hidden>リストを選択</option>
+            <option value="">リストなし</option>
+            {savedList ? (
+              savedList.map((list) => {
+                return (
+                  <option key={list.listsId} value="">
+                    {list.title}
+                  </option>
+                );
+              })
+            ) : (
+              <option value="">リストなし</option>
+            )}
+          </select>
         </div>
       </div>
     </div>

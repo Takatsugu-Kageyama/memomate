@@ -1,20 +1,20 @@
 .overall {
   @apply mt-[31px]  w-[66%] ml-[5%] text-gray object-contain;
 }
-.overall .memoNameInputWrap {
-  @apply w-[365px];
-}
 .overall .memoNameInputWrap .memoNameInput {
-  @apply bg-fadeBlack border-none text-white text-[53px] h-[53px];
+  @apply bg-fadeBlack text-white border-none text-[53px] h-[53px];
 }
-.overall .memoNameInputWrap .updateTimeText {
-  @apply text-[12px] mt-[18px];
+.overall .memoNameInputWrap .submitBtn {
+  @apply bg-btnBlue w-[240px] mt-[25px];
+}
+.overall .memoNameInputWrap .submitBtn:hover {
+  @apply opacity-50;
 }
 .overall .memoContainer {
   @apply flex;
 }
 .overall .memoContainer .memoContentsWrap {
-  @apply mt-[55px] basis-[80%];
+  @apply mt-[25px] basis-[80%];
 }
 .overall .memoContainer .memoContentsWrap .memoContentsInput {
   @apply h-[60vh] bg-softWhite text-black;
@@ -22,5 +22,7 @@
 .overall .memoContainer .addListBtn {
   @apply mt-[53px] ml-[32px];
 }
-
+.overall button {
+  @apply text-white;
+}
 /*# sourceMappingURL=CreateMemo.module.css.map */

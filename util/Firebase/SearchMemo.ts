@@ -15,7 +15,7 @@ export const searchMemo = async (value: string) => {
   );
   const memoSnapshot = await getDocs(queryMemo)
   if (memoSnapshot) {
-    const resultMemosData:Array<MemosType>  = [];
+    const resultMemosData:Array<MemosType> = [];
     memoSnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       resultMemosData.push(doc.data() as MemosType);
