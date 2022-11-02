@@ -65,7 +65,7 @@ const CreateList = () => {
       throw "Abort route";
     }
   };
-  const beforeUnloadHandler = (e:any) => {
+  const beforeUnloadHandler = (e: any) => {
     e.returnValue = "入力内容が保存されていません、本当にページを離れますか？";
   };
   //When user reload this page if contents is not saved:
@@ -153,20 +153,19 @@ const CreateList = () => {
           {!isSave ? (
             <button
               onClick={() => {
-                if (!listContents.title && !listContents.emoji) {
-                  listContents.title = listsTitle;
-                  listContents.emoji = chosenEmoji;
-                  listContents.favorite = isFavorite;
-                  listContents.memos = selectedMemos;
+                listContents.title = listsTitle;
+                listContents.emoji = chosenEmoji;
+                listContents.favorite = isFavorite;
+                listContents.memos = selectedMemos;
+                if (!listContents.title || !listContents.emoji) {
+                  window.alert("リストのタイトルと絵文字は記入が必須です。");
+                } else {
                   setIsSave(true);
                   sendList(listContents, currentListId).then((listId) => {
                     if (!currentListId) {
                       setCurrentListId(listId);
                     }
                   });
-                  console.log(listContents);
-                } else {
-                  window.alert("リストのタイトルと絵文字は記入が必須です。");
                 }
               }}
               className={styles.saveBtn}
