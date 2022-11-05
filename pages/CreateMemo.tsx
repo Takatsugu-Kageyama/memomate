@@ -5,7 +5,7 @@ import Head from "next/head";
 // import Chakra UI
 import { Button, Textarea } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 import { sendMemoData } from "../util/Firebase/SendMemo";
 import { getLists } from "../util/Firebase/GetLists";
 import React, { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ const CreateMemo = () => {
   const [memoTitle, setMemoTitle] = useState<string>("");
   const [memoDetail, setMemoDetail] = useState<string>("");
   const [savedList, setSavedList] = useState<Array<ListSchema>>([]);
+  const [currentSelected, setCurrentSelected] = useState<string>();
 
   const onChangeMemoDetail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -81,13 +82,19 @@ const CreateMemo = () => {
         <div className={styles.addListBtn}>
           {/*Add memo to the list*/}
           {/*TODO Get all  lists which is stored in database */}
-          <select name="" id="">
-            <option value="" selected hidden>リストを選択</option>
+          <Select
+            className={styles.listSelect}
+            placeholder="リストを選択"
+            onChange={(e) => {
+              setCurrentSelected(e.target.value);
+            }}
+          >
             <option value="">リストなし</option>
             {savedList ? (
               savedList.map((list) => {
                 return (
-                  <option key={list.listsId} value="">
+                  <option key={list.listsId} value={list.listsId}>
+                    <span className={styles.listsIcon}>{list.emoji}</span>
                     {list.title}
                   </option>
                 );
@@ -95,7 +102,7 @@ const CreateMemo = () => {
             ) : (
               <option value="">リストなし</option>
             )}
-          </select>
+          </Select>
         </div>
       </div>
     </div>

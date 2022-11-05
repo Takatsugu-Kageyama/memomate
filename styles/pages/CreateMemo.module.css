@@ -5,7 +5,7 @@
   @apply bg-fadeBlack text-white border-none text-[53px] h-[53px];
 }
 .overall .memoNameInputWrap .submitBtn {
-  @apply bg-btnBlue w-[240px] mt-[25px];
+  @apply bg-btnBlue w-[240px] mt-[25px] rounded-[30px];
 }
 .overall .memoNameInputWrap .submitBtn:hover {
   @apply opacity-50;
@@ -21,6 +21,9 @@
 }
 .overall .memoContainer .addListBtn {
   @apply mt-[53px] ml-[32px];
+}
+.overall .memoContainer .addListBtn .listSelect {
+  @apply border rounded-[5px] h-[70px] w-[210px] bg-softWhite text-[#2F2F2F] text-[22px];
 }
 .overall button {
   @apply text-white;
