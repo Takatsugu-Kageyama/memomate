@@ -16,7 +16,8 @@ const CreateMemo = () => {
   const [memoTitle, setMemoTitle] = useState<string>("");
   const [memoDetail, setMemoDetail] = useState<string>("");
   const [savedList, setSavedList] = useState<Array<ListSchema>>([]);
-  const [currentSelected, setCurrentSelected] = useState<string>();
+  const [selectedListId, setSelectedListId] = useState<string>("");
+  const [currentMemosId, setCurrentMemosId] = useState<string>("");
 
   const onChangeMemoDetail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -34,7 +35,6 @@ const CreateMemo = () => {
       if (typeof value !== "undefined") {
         setSavedList(value);
       }
-      console.log(value);
     });
   }, []);
 
@@ -60,10 +60,14 @@ const CreateMemo = () => {
           className={styles.submitBtn}
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
-            sendMemoData(memoTitle, memoDetail).then(() => {
+            sendMemoData(memoTitle, memoDetail,currentMemosId, selectedListId).then((memosId) => {
+              if (memosId) {
+                setCurrentMemosId(memosId);
+              }
               setMemoTitle("");
               setMemoDetail("");
             });
+            console.log(selectedListId);
           }}
         >
           保存する
@@ -86,7 +90,7 @@ const CreateMemo = () => {
             className={styles.listSelect}
             placeholder="リストを選択"
             onChange={(e) => {
-              setCurrentSelected(e.target.value);
+              setSelectedListId(e.target.value);
             }}
           >
             <option value="">リストなし</option>
