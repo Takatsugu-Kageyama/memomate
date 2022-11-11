@@ -11,8 +11,13 @@
         @apply opacity-50;
       }
     }
+    .savedBtn {
+      @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-gray text-softWhite rounded-[30px];
+      &:hover {
+        @apply opacity-[70%];
+      }
+    }
   }
-
 
   .memoContainer {
     @apply flex;
@@ -25,7 +30,7 @@
 
     .addListBtn {
       @apply mt-[53px] ml-[32px];
-      .listSelect{
+      .listSelect {
         @apply border rounded-[5px] h-[70px] w-[210px] bg-softWhite text-[#2F2F2F] text-[22px];
       }
     }

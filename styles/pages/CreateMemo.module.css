@@ -10,6 +10,12 @@
 .overall .memoNameInputWrap .submitBtn:hover {
   @apply opacity-50;
 }
+.overall .memoNameInputWrap .savedBtn {
+  @apply w-[300px] text-[20px] py-[10px] m-[15px] bg-gray text-softWhite rounded-[30px];
+}
+.overall .memoNameInputWrap .savedBtn:hover {
+  @apply opacity-[70%];
+}
 .overall .memoContainer {
   @apply flex;
 }

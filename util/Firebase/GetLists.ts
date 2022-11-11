@@ -10,7 +10,7 @@ export const getLists = async () => {
   const result: Array<ListSchema> = [];
   if (listsSnapShot) {
     listsSnapShot.forEach((doc) => {
-      result.push(doc.data().list as ListSchema);
+      result.push(doc.data() as ListSchema);
     });
   }
 
