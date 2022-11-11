@@ -5,25 +5,65 @@ import Head from "next/head";
 // import Chakra UI
 import { Button, Textarea } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-import { sendMemoData } from "../util/Firebase/SendMemo"; 
-import React, { useState } from "react";
+import { Select } from "@chakra-ui/react";
+import { sendMemoData } from "../util/Firebase/SendMemo";
+import { getLists } from "../util/Firebase/GetLists";
+import React, { useEffect, useState } from "react";
+import { ListSchema } from "../util/TypeDefinition/ListSchema";
+import { useRouter } from "next/router";
 
 //send memo contents to database
 const CreateMemo = () => {
-  const [memoTitle, setMemoTitle] = useState("");
-  const [memoDetail, setMemoDetail] = useState("");
+  const [memoTitle, setMemoTitle] = useState<string>("");
+  const [memoDetail, setMemoDetail] = useState<string>("");
+  const [savedList, setSavedList] = useState<Array<ListSchema>>([]);
+  const [selectedListId, setSelectedListId] = useState<string>("");
+  const [currentMemosId, setCurrentMemosId] = useState<string>("");
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const router = useRouter();
 
   const onChangeMemoDetail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     setMemoDetail(e.target.value);
-    console.log(memoDetail);
+    setIsSaved(false);
+    // console.log(memoDetail);
   };
 
   const onChangeMemoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+    setIsSaved(false);
     setMemoTitle(e.target.value);
   };
+
+  useEffect(() => {
+    getLists().then((value) => {
+      if (typeof value !== "undefined") {
+        setSavedList(value);
+      }
+    });
+  }, []);
+
+  //Page Handler
+  const pageChangeHandler = () => {
+    const alert = window.confirm("入力内容が保存されていません、本当にページを離れますか？");
+    if (!alert) {
+      throw "Abort route";
+    }
+  };
+  const beforeUnloadHandler = (e: any) => {
+    e.returnValue = "入力内容が保存されていません、本当にページを離れますか？";
+  };
+  //When user reload this page if contents is not saved:
+  useEffect(() => {
+    if (!isSaved) {
+      router.events.on("routeChangeStart", pageChangeHandler);
+      window.addEventListener("beforeunload", beforeUnloadHandler);
+      return () => {
+        router.events.off("routeChangeStart", pageChangeHandler);
+        window.removeEventListener("beforeunload", beforeUnloadHandler);
+      };
+    }
+  }, [!isSaved]);
 
   return (
     <div className={styles.overall}>
@@ -43,18 +83,25 @@ const CreateMemo = () => {
           onChange={onChangeMemoTitle}
         />
         {/*TODO Get times when Memo is updated by user and get time from database. */}
-        <Button
-          className={styles.submitBtn}
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-            e.preventDefault();
-            sendMemoData(memoTitle, memoDetail).then(() => {
-              setMemoTitle("");
-              setMemoDetail("");
-            });
-          }}
-        >
-          保存する
-        </Button>
+        {!isSaved ? (
+          <Button
+            className={styles.submitBtn}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              e.preventDefault();
+              setIsSaved(true);
+              console.log(selectedListId);
+              sendMemoData(memoTitle, memoDetail, currentMemosId, selectedListId).then((memosId) => {
+                if (memosId) {
+                  setCurrentMemosId(memosId);
+                }
+              });
+            }}
+          >
+            保存する
+          </Button>
+        ) : (
+          <Button className={styles.savedBtn}>保存済み</Button>
+        )}
       </div>
       <div className={styles.memoContainer}>
         <div className={styles.memoContentsWrap}>
@@ -69,28 +116,28 @@ const CreateMemo = () => {
         <div className={styles.addListBtn}>
           {/*Add memo to the list*/}
           {/*TODO Get all  lists which is stored in database */}
-          <Menu>
-            <MenuButton
-              as={Button}
-              px={4}
-              py={2}
-              transition="all 0.2s"
-              borderRadius="md"
-              borderWidth="1px"
-              _hover={{ bg: "#555555" }}
-              _expanded={{ bg: "#282828" }}
-              _focus={{ boxShadow: "outline" }}
-            >
-              リストに追加
-            </MenuButton>
-            <MenuList>
-              <MenuItem>リスト#1</MenuItem>
-              <MenuItem>リスト#2</MenuItem>
-              <MenuItem>リスト#3</MenuItem>
-              <MenuItem>リスト#4</MenuItem>
-              <MenuItem>リスト#5</MenuItem>
-            </MenuList>
-          </Menu>
+          <Select
+            className={styles.listSelect}
+            placeholder="リストを選択"
+            onChange={(e) => {
+              setSelectedListId(e.target.value);
+              setIsSaved(false);
+            }}
+          >
+            <option value="">リストなし</option>
+            {savedList ? (
+              savedList.map((list) => {
+                return (
+                  <option key={list.listsId} value={list.listsId}>
+                    <span className={styles.listsIcon}>{list.emoji}</span>
+                    {list.title}
+                  </option>
+                );
+              })
+            ) : (
+              <option value="">リストなし</option>
+            )}
+          </Select>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import { EmojiSchema } from "./EmojiSchema";
 import { MemosType } from "./MemosSchema";
 
 export type ListSchema = {
