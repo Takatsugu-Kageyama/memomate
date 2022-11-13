@@ -8,15 +8,12 @@ import dynamic from "next/dynamic";
 import SelectedMemo from "../components/CreateList/SelectedMemo";
 //import TypeDefinition
 import { ListSchema } from "../util/TypeDefinition/ListSchema";
-import { EmojiSchema } from "../util/TypeDefinition/EmojiSchema";
 //import GUI
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import { useRouter } from "next/router";
 import { MemosType } from "../util/TypeDefinition/MemosSchema";
 import { sendList } from "../util/Firebase/SendList";
-import { EmojiObjects } from "@mui/icons-material";
-import { type } from "os";
 
 const CreateList = () => {
   const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });

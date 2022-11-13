@@ -1,4 +1,4 @@
-import { collection, doc, setDoc } from "@firebase/firestore";
+import { collection, doc, setDoc, serverTimestamp } from "@firebase/firestore";
 import { ListSchema } from "../TypeDefinition/ListSchema";
 import { db } from "./firebaseConfig";
 
@@ -20,6 +20,7 @@ export const sendList = async (list: ListSchema, listId: string) => {
       memos: list.memos,
       favorite: list.favorite,
       listId: list.listsId,
+      time: serverTimestamp(),
     });
   } else {
     //If "listId" has value
@@ -29,6 +30,7 @@ export const sendList = async (list: ListSchema, listId: string) => {
       memos: list.memos,
       favorite: list.favorite,
       listId: list.listsId,
+      time: serverTimestamp(),
     });
   }
 
